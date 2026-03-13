@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Landing Page Starter</title>
+  <title>LaunchKit Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
@@ -12,19 +12,44 @@
 <body>
   <main class="wrap">
     <section class="hero">
-      <p class="tag">Brand-Ready Template</p>
-      <h1>Launch premium landing pages faster.</h1>
-      <p class="sub">Consistent typography, spacing, and color tokens to ship polished pages quickly.</p>
+      <p class="tag">Growth Marketing Template</p>
+      <h1>Ship premium product pages in days, not weeks.</h1>
+      <p class="sub">LaunchKit combines strong visual hierarchy with conversion-focused sections.</p>
       <div class="actions">
-        <a class="btn primary" href="#">Start Free</a>
+        <a class="btn primary" href="#pricing">Get Started</a>
         <a class="btn ghost" href="#features">See Features</a>
       </div>
     </section>
+
     <section id="features" class="grid">
-      <article><h2>Responsive</h2><p>Optimized for desktop, tablet, and mobile.</p></article>
-      <article><h2>Scalable</h2><p>Easy to extend for product pages and portfolios.</p></article>
-      <article><h2>Professional</h2><p>Strong visual hierarchy without extra frameworks.</p></article>
+      <article><h2>Conversion-Ready</h2><p>Prebuilt storytelling blocks from hero to CTA.</p></article>
+      <article><h2>Component-Based</h2><p>Reusable sections for growth teams and founders.</p></article>
+      <article><h2>Fast to Customize</h2><p>Tokenized styling for quick brand adaptation.</p></article>
+    </section>
+
+    <section id="pricing" class="pricing">
+      <div class="pricing-head">
+        <h2>Pricing</h2>
+        <label class="toggle">
+          <span>Monthly</span>
+          <input id="billing-toggle" type="checkbox" />
+          <span>Yearly (20% off)</span>
+        </label>
+      </div>
+      <div class="plans">
+        <article><h3>Starter</h3><p class="price" data-month="19" data-year="15">$19</p><small>/month</small></article>
+        <article class="featured"><h3>Growth</h3><p class="price" data-month="49" data-year="39">$49</p><small>/month</small></article>
+        <article><h3>Scale</h3><p class="price" data-month="99" data-year="79">$99</p><small>/month</small></article>
+      </div>
+    </section>
+
+    <section class="faq">
+      <h2>FAQ</h2>
+      <details><summary>Can I use this for client projects?</summary><p>Yes, this template is project-safe and easy to white-label.</p></details>
+      <details><summary>Is this mobile friendly?</summary><p>Yes, the layout is fully responsive by default.</p></details>
+      <details><summary>Can I integrate with frameworks later?</summary><p>Yes, the structure is clean and easy to port into React/Vue.</p></details>
     </section>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>

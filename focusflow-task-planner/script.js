@@ -1,112 +1,111 @@
-const form = document.getElementById("task-form");
-const taskInput = document.getElementById("task-input");
-const taskList = document.getElementById("task-list");
-const emptyState = document.getElementById("empty-state");
-const clearCompletedBtn = document.getElementById("clear-completed");
-
-const totalCount = document.getElementById("total-count");
-const doneCount = document.getElementById("done-count");
-const progressCount = document.getElementById("progress-count");
-
-const STORAGE_KEY = "focusflow_tasks_v1";
-
-let tasks = loadTasks();
+const $ = (id) => document.getElementById(id);
+const el = {
+  form: $("task-form"), input: $("task-input"), due: $("task-date"), priority: $("task-priority"),
+  search: $("search"), status: $("status-filter"), sort: $("sort-by"), clear: $("clear-completed"),
+  list: $("task-list"), empty: $("empty"), total: $("total"), completed: $("completed"), overdue: $("overdue"), progress: $("progress")
+};
+const KEY = "focusflow_pro_v2";
+let tasks = load();
 render();
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const text = taskInput.value.trim();
-  if (!text) return;
-
+el.form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const title = el.input.value.trim();
+  if (!title) return;
   tasks.unshift({
     id: crypto.randomUUID(),
-    text,
-    done: false
+    title,
+    due: el.due.value || null,
+    priority: el.priority.value,
+    done: false,
+    createdAt: Date.now()
   });
-
-  taskInput.value = "";
-  saveTasks();
+  el.form.reset();
+  el.priority.value = "medium";
+  save();
   render();
 });
 
-clearCompletedBtn.addEventListener("click", () => {
-  tasks = tasks.filter((task) => !task.done);
-  saveTasks();
-  render();
-});
+[el.search, el.status, el.sort].forEach((node) => node.addEventListener("input", render));
+el.clear.addEventListener("click", () => { tasks = tasks.filter((t) => !t.done); save(); render(); });
+
+function visibleTasks() {
+  const q = el.search.value.trim().toLowerCase();
+  const status = el.status.value;
+  const sort = el.sort.value;
+  const priorityRank = { high: 0, medium: 1, low: 2 };
+
+  let rows = tasks.filter((t) => t.title.toLowerCase().includes(q));
+  if (status === "active") rows = rows.filter((t) => !t.done);
+  if (status === "done") rows = rows.filter((t) => t.done);
+
+  rows.sort((a, b) => {
+    if (sort === "priority") return priorityRank[a.priority] - priorityRank[b.priority];
+    if (sort === "due") return (a.due || "9999-12-31").localeCompare(b.due || "9999-12-31");
+    return b.createdAt - a.createdAt;
+  });
+  return rows;
+}
 
 function render() {
-  taskList.innerHTML = "";
+  const rows = visibleTasks();
+  el.list.innerHTML = "";
+  el.empty.hidden = rows.length > 0;
 
-  if (tasks.length === 0) {
-    emptyState.hidden = false;
-  } else {
-    emptyState.hidden = true;
-  }
+  rows.forEach((task) => {
+    const li = document.createElement("li");
+    li.className = `task${task.done ? " done" : ""}`;
 
-  for (const task of tasks) {
-    const item = document.createElement("li");
-    item.className = `task${task.done ? " done" : ""}`;
+    const check = document.createElement("input");
+    check.type = "checkbox";
+    check.checked = task.done;
+    check.addEventListener("change", () => {
+      tasks = tasks.map((t) => t.id === task.id ? { ...t, done: !t.done } : t);
+      save(); render();
+    });
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = task.done;
-    checkbox.addEventListener("change", () => toggleTask(task.id));
+    const titleWrap = document.createElement("div");
+    const title = document.createElement("div");
+    title.className = "title";
+    title.textContent = task.title;
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.textContent = task.due ? `Due ${task.due}` : "No due date";
+    titleWrap.append(title, meta);
 
-    const text = document.createElement("span");
-    text.className = "task-text";
-    text.textContent = task.text;
+    const pill = document.createElement("span");
+    pill.className = `priority ${task.priority}`;
+    pill.textContent = task.priority;
 
     const del = document.createElement("button");
-    del.className = "delete-btn";
+    del.className = "delete";
     del.type = "button";
-    del.setAttribute("aria-label", `Delete ${task.text}`);
     del.textContent = "Delete";
-    del.addEventListener("click", () => deleteTask(task.id));
+    del.addEventListener("click", () => {
+      tasks = tasks.filter((t) => t.id !== task.id);
+      save(); render();
+    });
 
-    item.append(checkbox, text, del);
-    taskList.append(item);
-  }
+    li.append(check, titleWrap, pill, del);
+    el.list.appendChild(li);
+  });
 
   const total = tasks.length;
-  const done = tasks.filter((t) => t.done).length;
-  const progress = total > 0 ? Math.round((done / total) * 100) : 0;
+  const completed = tasks.filter((t) => t.done).length;
+  const today = new Date().toISOString().slice(0, 10);
+  const overdue = tasks.filter((t) => !t.done && t.due && t.due < today).length;
+  const progress = total ? Math.round((completed / total) * 100) : 0;
 
-  totalCount.textContent = String(total);
-  doneCount.textContent = String(done);
-  progressCount.textContent = `${progress}%`;
+  el.total.textContent = String(total);
+  el.completed.textContent = String(completed);
+  el.overdue.textContent = String(overdue);
+  el.progress.textContent = `${progress}%`;
 }
 
-function toggleTask(id) {
-  tasks = tasks.map((task) =>
-    task.id === id ? { ...task, done: !task.done } : task
-  );
-  saveTasks();
-  render();
-}
-
-function deleteTask(id) {
-  tasks = tasks.filter((task) => task.id !== id);
-  saveTasks();
-  render();
-}
-
-function loadTasks() {
+function load() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-
-    return parsed.filter(
-      (task) => task && typeof task.id === "string" && typeof task.text === "string"
-    );
-  } catch {
-    return [];
-  }
+    const parsed = JSON.parse(localStorage.getItem(KEY) || "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch { return []; }
 }
-
-function saveTasks() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
-}
+function save() { localStorage.setItem(KEY, JSON.stringify(tasks)); }

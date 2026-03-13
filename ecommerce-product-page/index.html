@@ -1,2 +1,54 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Nova Headphones</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/></head><body><main class="wrap"><section class="card"><div class="media"></div><div><p class="badge">Best Seller</p><h1>Nova X7 Wireless Headphones</h1><p>Crystal-clear audio, 40-hour battery, and adaptive noise canceling.</p><h2>$129.00</h2><div class="row"><button id="minus">-</button><span id="qty">1</span><button id="plus">+</button></div><button id="add">Add to Cart</button><p id="msg"></p></div></section></main><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nova X7 Product Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="left">
+        <div id="hero" class="hero-img"></div>
+        <div class="thumbs">
+          <button class="thumb active" data-color="forest">Forest</button>
+          <button class="thumb" data-color="midnight">Midnight</button>
+          <button class="thumb" data-color="sand">Sand</button>
+        </div>
+      </div>
+      <div class="right">
+        <p class="badge">Best Seller</p>
+        <h1>Nova X7 Wireless Headphones</h1>
+        <p>Adaptive ANC, studio-grade clarity, and 40-hour battery life.</p>
+
+        <div class="variant-row">
+          <label>Color</label>
+          <select id="color-select"><option>Forest</option><option>Midnight</option><option>Sand</option></select>
+        </div>
+
+        <h2 id="price">$129.00</h2>
+        <div class="qty-row">
+          <button id="minus" type="button">-</button>
+          <span id="qty">1</span>
+          <button id="plus" type="button">+</button>
+        </div>
+
+        <div class="ship-row">
+          <input id="zip" placeholder="ZIP code" maxlength="10" />
+          <button id="check-ship" type="button" class="ghost">Check shipping</button>
+        </div>
+        <p id="ship-msg" class="muted"></p>
+
+        <button id="add">Add to Cart</button>
+        <p id="msg"></p>
+        <p class="cart">Cart items: <strong id="cart-count">0</strong></p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

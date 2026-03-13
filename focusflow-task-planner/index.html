@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FocusFlow Task Planner</title>
+  <title>FocusFlow Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -11,33 +11,49 @@
 </head>
 <body>
   <main class="container">
-    <header class="hero">
-      <p class="badge">Pro Productivity UI</p>
-      <h1>FocusFlow</h1>
-      <p>Plan tasks, track progress, and keep momentum every day.</p>
+    <header>
+      <h1>FocusFlow Pro</h1>
+      <p>Priority planning with real progress tracking.</p>
     </header>
 
     <section class="panel">
-      <h2>Add Task</h2>
-      <form id="task-form" class="task-form">
-        <input id="task-input" type="text" placeholder="What needs to be done?" maxlength="120" required />
-        <button type="submit">Add</button>
+      <form id="task-form" class="grid">
+        <input id="task-input" type="text" placeholder="Task title" maxlength="120" required />
+        <input id="task-date" type="date" />
+        <select id="task-priority">
+          <option value="high">High</option>
+          <option value="medium" selected>Medium</option>
+          <option value="low">Low</option>
+        </select>
+        <button type="submit">Add Task</button>
       </form>
     </section>
 
+    <section class="panel controls">
+      <input id="search" type="search" placeholder="Search tasks" />
+      <select id="status-filter">
+        <option value="all">All</option>
+        <option value="active">Active</option>
+        <option value="done">Done</option>
+      </select>
+      <select id="sort-by">
+        <option value="created">Sort: Newest</option>
+        <option value="priority">Sort: Priority</option>
+        <option value="due">Sort: Due Date</option>
+      </select>
+      <button id="clear-completed" class="ghost" type="button">Clear Completed</button>
+    </section>
+
     <section class="panel">
-      <div class="head">
-        <h2>Today's Tasks</h2>
-        <button id="clear-completed" class="ghost" type="button">Clear Completed</button>
-      </div>
       <ul id="task-list" class="task-list"></ul>
-      <p id="empty-state" class="empty">No tasks yet. Add your first one.</p>
+      <p id="empty" class="empty">No tasks match your filters.</p>
     </section>
 
     <section class="stats">
-      <article><p>Total</p><strong id="total-count">0</strong></article>
-      <article><p>Completed</p><strong id="done-count">0</strong></article>
-      <article><p>Progress</p><strong id="progress-count">0%</strong></article>
+      <article><p>Total</p><strong id="total">0</strong></article>
+      <article><p>Completed</p><strong id="completed">0</strong></article>
+      <article><p>Overdue</p><strong id="overdue">0</strong></article>
+      <article><p>Progress</p><strong id="progress">0%</strong></article>
     </section>
   </main>
   <script src="script.js"></script>

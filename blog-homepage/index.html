@@ -1,2 +1,33 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Dev Journal</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/></head><body><header><h1>Dev Journal</h1><p>Design, code, and product stories.</p></header><main class="grid"><article><span>CSS</span><h2>Building Better Layout Systems</h2><p>How to use grids and spacing scales for consistency.</p></article><article><span>JavaScript</span><h2>State Management Without Frameworks</h2><p>A practical approach for small to medium apps.</p></article><article><span>Career</span><h2>Freelancer Workflow That Scales</h2><p>Templates and rituals for stress-free delivery.</p></article></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dev Journal Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>Dev Journal</h1>
+    <p>Design, code, and product strategy.</p>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search posts" />
+      <select id="category">
+        <option value="all">All</option>
+        <option value="css">CSS</option>
+        <option value="javascript">JavaScript</option>
+        <option value="career">Career</option>
+        <option value="product">Product</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="posts" class="grid"></main>
+  <p id="empty" class="empty">No posts match your filters.</p>
+
+  <script src="script.js"></script>
+</body>
+</html>

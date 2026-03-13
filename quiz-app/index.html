@@ -1,2 +1,33 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Quiz App</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/></head><body><main class="box"><h1>Frontend Quiz</h1><p id="q"></p><div id="choices"></div><button id="next">Next</button><p id="score"></p></main><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Quiz App Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <main class="box">
+    <div class="head">
+      <h1>Frontend Quiz Pro</h1>
+      <p>High score: <strong id="high">0</strong></p>
+    </div>
+
+    <div class="meta">
+      <p id="step">Question 1</p>
+      <p id="timer">20s</p>
+    </div>
+    <div class="bar"><div id="bar-fill"></div></div>
+
+    <p id="q"></p>
+    <div id="choices"></div>
+
+    <p id="feedback"></p>
+    <button id="next">Next</button>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,2 +1,56 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Ada Portfolio</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"/></head><body><header><nav><h1>Ada Dev</h1><a href="#work">Projects</a><a href="#contact">Contact</a></nav><section class="hero"><p class="kicker">Frontend Developer</p><h2>Building clean web experiences that convert.</h2><p>I design and develop responsive product websites for startups and creators.</p><button>Hire Me</button></section></header><main><section id="work" class="grid"><article><h3>Landing Pages</h3><p>Conversion-focused pages with strong visual hierarchy.</p></article><article><h3>Dashboards</h3><p>Readable data UIs with robust component systems.</p></article><article><h3>E-commerce UI</h3><p>Shopping experiences tuned for trust and speed.</p></article></section><section id="contact" class="contact"><h3>Let's work together</h3><p>Email: hello@adadev.dev</p></section></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ada Dev Portfolio Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Ada Dev</h1>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <section class="hero">
+      <p class="kicker">Frontend Engineer</p>
+      <h2>Designing digital products users enjoy and teams can scale.</h2>
+      <p>I build fast interfaces with clear UX and strong conversion outcomes.</p>
+    </section>
+  </header>
+
+  <main>
+    <section id="work" class="panel">
+      <div class="head">
+        <h3>Selected Work</h3>
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="marketing">Marketing</button>
+          <button class="filter" data-filter="dashboard">Dashboard</button>
+          <button class="filter" data-filter="commerce">Commerce</button>
+        </div>
+      </div>
+      <div id="cards" class="grid"></div>
+    </section>
+
+    <section id="contact" class="panel contact">
+      <h3>Available for projects</h3>
+      <p>Email: hello@adadev.dev</p>
+    </section>
+  </main>
+
+  <dialog id="project-modal">
+    <form method="dialog" class="modal">
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <button>Close</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
