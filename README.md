@@ -1,18 +1,39 @@
 # web_dev-projects
 
-Frontend mini-project collection by **hashbuilder60-netizen**.
+Portfolio-grade frontend project collection by **hashbuilder60-netizen**.
 
-## Live Site
-- [GitHub Pages](https://hashbuilder60-netizen.github.io/web_dev-projects/)
+[![Deploy GitHub Pages](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml)
 
-## Popular-Site Comparison Upgrades (All Projects)
-1. `focusflow-task-planner/` -> workspace planning patterns inspired by [Notion templates](https://www.notion.com/templates/category/tasks)
-2. `landing-page-starter/` -> SaaS conversion flow inspired by [Stripe](https://stripe.com)
-3. `portfolio-website/` -> case-study portfolio patterns inspired by [Webflow](https://webflow.com)
-4. `ecommerce-product-page/` -> premium product storytelling inspired by [Apple](https://www.apple.com)
-5. `blog-homepage/` -> editorial feed patterns inspired by [Medium](https://medium.com)
-6. `weather-app/` -> dashboard weather layout inspired by [AccuWeather](https://www.accuweather.com)
-7. `quiz-app/` -> gamified learning/trivia interaction inspired by [Kahoot](https://kahoot.com)
+## Recruiter Snapshot
+- **Role fit**: Junior-to-mid Frontend Engineer (HTML, CSS, JavaScript)
+- **Strengths shown**: UI systems, interaction design, state handling, responsive layout, UX-oriented implementation
+- **Live hub**: [GitHub Pages](https://hashbuilder60-netizen.github.io/web_dev-projects/)
 
-## License
-MIT - see `LICENSE`.
+## Project Showcase
+| Project | Live Demo | Skills Demonstrated |
+|---|---|---|
+| FocusFlow Task Planner | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/focusflow-task-planner/) | State management, filtering/sorting, localStorage, productivity UX |
+| Landing Page Starter | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/landing-page-starter/) | Conversion UI, pricing interactions, social proof layout |
+| Portfolio Website | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/portfolio-website/) | Case-study storytelling, dynamic filtering, modal UX |
+| E-commerce Product Page | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/ecommerce-product-page/) | Product-detail UX, variant logic, sticky buy flow |
+| Blog Homepage | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/blog-homepage/) | Editorial layout, client-side filtering/search, feed rendering |
+| Weather App | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/weather-app/) | API integration, geolocation, forecast rendering, unit switching |
+| Quiz App | [Open](https://hashbuilder60-netizen.github.io/web_dev-projects/quiz-app/) | Timed interactions, game loop logic, score persistence |
+
+## Design Benchmarking
+Each project was upgraded against patterns used by popular products:
+- Notion-style productivity workflows
+- Stripe-style SaaS conversion sections
+- Apple-style product storytelling
+- Medium/Substack editorial flow
+- Kahoot-style gamified interactions
+- AccuWeather-style weather dashboard layout
+
+## Local Run
+1. Clone the repo.
+2. Open `index.html` in a browser.
+3. Open any project folder from the home hub.
+
+## Additional Notes
+- Detailed recruiter talking points: [RECRUITER_NOTES.md](./RECRUITER_NOTES.md)
+- License: MIT (`LICENSE`)
