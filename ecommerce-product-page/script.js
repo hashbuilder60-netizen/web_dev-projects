@@ -1,0 +1,1 @@
+let q=1;const qty=document.getElementById("qty"),msg=document.getElementById("msg");document.getElementById("plus").onclick=()=>{q++;qty.textContent=q};document.getElementById("minus").onclick=()=>{if(q>1){q--;qty.textContent=q}};document.getElementById("add").onclick=()=>{msg.textContent=`Added ${q} item(s) to cart.`};

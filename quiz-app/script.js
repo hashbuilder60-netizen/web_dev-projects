@@ -1,0 +1,5 @@
+const quiz=[{q:"What does CSS stand for?",a:["Creative Style Sheets","Cascading Style Sheets","Computer Style System"],c:1},{q:"Which keyword declares a constant in JS?",a:["let","var","const"],c:2},{q:"Which tag links JavaScript?",a:["<script>","<js>","<javascript>"],c:0}];
+let i=0,s=0,selected=null;const q=document.getElementById("q"),choices=document.getElementById("choices"),next=document.getElementById("next"),score=document.getElementById("score");
+function render(){selected=null;score.textContent="";const item=quiz[i];q.textContent=`Q${i+1}. ${item.q}`;choices.innerHTML="";item.a.forEach((t,idx)=>{const b=document.createElement("button");b.className="choice";b.textContent=t;b.onclick=()=>{selected=idx;[...choices.children].forEach(x=>x.style.outline="none");b.style.outline="2px solid #2f6f45"};choices.appendChild(b)});} 
+next.onclick=()=>{if(selected===null){score.textContent="Pick an answer first.";return;}if(selected===quiz[i].c)s++;i++;if(i<quiz.length){render();}else{q.textContent="Quiz complete";choices.innerHTML="";score.textContent=`Score: ${s}/${quiz.length}`;next.textContent="Restart";next.onclick=()=>location.reload();}};
+render();
