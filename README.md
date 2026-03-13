@@ -34,6 +34,4 @@ Each project was upgraded against patterns used by popular products:
 2. Open `index.html` in a browser.
 3. Open any project folder from the home hub.
 
-## Additional Notes
-- Detailed recruiter talking points: [RECRUITER_NOTES.md](./RECRUITER_NOTES.md)
 - License: MIT (`LICENSE`)
