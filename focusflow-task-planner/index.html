@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Advanced productivity planner with priorities, due dates, filters, and persistent progress analytics." />
+  <meta name="description" content="FocusFlow Pro task planner inspired by modern workspace apps with list/board views and quick capture." />
   <meta name="theme-color" content="#1f8a70" />
   <meta property="og:title" content="FocusFlow Pro" />
-  <meta property="og:description" content="Advanced productivity planner with priorities, due dates, filters, and persistent progress analytics." />
+  <meta property="og:description" content="Task planner with quick capture, priority workflows, and board/list switching." />
   <meta property="og:type" content="website" />
   <title>FocusFlow Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,42 +16,42 @@
 </head>
 <body>
   <main class="container">
-    <header>
-      <h1>FocusFlow Pro</h1>
-      <p>Priority planning with real progress tracking.</p>
+    <header class="head">
+      <div>
+        <h1>FocusFlow Pro</h1>
+        <p>Quick-capture task planning with list and board views.</p>
+      </div>
+      <button id="open-capture" class="capture-btn" type="button">Quick Capture</button>
     </header>
 
     <section class="panel">
       <form id="task-form" class="grid">
         <input aria-label="Task title" id="task-input" type="text" placeholder="Task title" maxlength="120" required />
         <input aria-label="Due date" id="task-date" type="date" />
-        <select aria-label="Task priority" id="task-priority">
-          <option value="high">High</option>
-          <option value="medium" selected>Medium</option>
-          <option value="low">Low</option>
-        </select>
+        <select aria-label="Task priority" id="task-priority"><option value="high">High</option><option value="medium" selected>Medium</option><option value="low">Low</option></select>
         <button type="submit">Add Task</button>
       </form>
     </section>
 
     <section class="panel controls">
       <input aria-label="Search tasks" id="search" type="search" placeholder="Search tasks" />
-      <select id="status-filter">
-        <option value="all">All</option>
-        <option value="active">Active</option>
-        <option value="done">Done</option>
-      </select>
-      <select id="sort-by">
-        <option value="created">Sort: Newest</option>
-        <option value="priority">Sort: Priority</option>
-        <option value="due">Sort: Due Date</option>
-      </select>
+      <select id="status-filter"><option value="all">All</option><option value="active">Active</option><option value="done">Done</option></select>
+      <select id="sort-by"><option value="created">Sort: Newest</option><option value="priority">Sort: Priority</option><option value="due">Sort: Due Date</option></select>
+      <div class="view-toggle"><button id="list-view" class="active" type="button">List</button><button id="board-view" type="button">Board</button></div>
       <button id="clear-completed" class="ghost" type="button">Clear Completed</button>
     </section>
 
-    <section class="panel">
+    <section id="list-wrap" class="panel">
       <ul id="task-list" class="task-list"></ul>
       <p id="empty" class="empty">No tasks match your filters.</p>
+    </section>
+
+    <section id="board-wrap" class="panel hidden">
+      <div class="board">
+        <article><h3>High</h3><div id="col-high" class="col"></div></article>
+        <article><h3>Medium</h3><div id="col-medium" class="col"></div></article>
+        <article><h3>Low</h3><div id="col-low" class="col"></div></article>
+      </div>
     </section>
 
     <section class="stats">
@@ -61,9 +61,15 @@
       <article><p>Progress</p><strong id="progress">0%</strong></article>
     </section>
   </main>
+
+  <dialog id="capture-dialog">
+    <form method="dialog" class="capture-form" id="capture-form">
+      <h3>Quick Capture</h3>
+      <input id="capture-input" placeholder="Capture task quickly (Ctrl+K)" maxlength="120" required />
+      <div><button type="submit">Save</button><button type="button" id="close-capture" class="ghost">Cancel</button></div>
+    </form>
+  </dialog>
+
   <script src="script.js"></script>
 </body>
 </html>
-
-
-

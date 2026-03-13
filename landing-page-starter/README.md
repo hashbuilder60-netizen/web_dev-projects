@@ -1,18 +1,15 @@
 # Landing Page Starter
 
-Advanced marketing landing page template.
+Conversion-focused landing page template.
 
-## Features
-- Hero + feature blocks
-- Interactive monthly/yearly pricing toggle
-- FAQ section
-- Fully responsive layout
+## Upgrades
+- Added sticky navigation and top CTA
+- Added logo belt, KPI metrics, and customer stories
+- Added rotating testimonial section
+- Improved pricing section and FAQ flow
 
-## Accessibility
-- Semantic sections and button type safety
-
-## SEO
-- Description + Open Graph tags in `index.html`
+## Inspiration Comparison
+- Inspired by high-conversion SaaS homepage patterns like Stripe's social-proof and structured conversion layout.
 
 ## Run
 Open `index.html`.

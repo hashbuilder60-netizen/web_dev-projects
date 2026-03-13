@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Advanced ecommerce product detail page with variants, shipping checker, and persistent cart state." />
+  <meta name="description" content="Advanced ecommerce product page inspired by top consumer product websites." />
   <meta name="theme-color" content="#1f8a70" />
   <meta property="og:title" content="Nova X7 Product Experience" />
-  <meta property="og:description" content="Advanced ecommerce product detail page with variants, shipping checker, and persistent cart state." />
+  <meta property="og:description" content="Interactive gallery, sticky buy panel, reviews, and product detail tabs." />
   <meta property="og:type" content="website" />
   <title>Nova X7 Product Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,47 +16,60 @@
 </head>
 <body>
   <main class="wrap">
-    <section class="card">
-      <div class="left">
-        <div id="hero" class="hero-img"></div>
-        <div class="thumbs">
-          <button class="thumb active" data-color="forest">Forest</button>
-          <button class="thumb" data-color="midnight">Midnight</button>
-          <button class="thumb" data-color="sand">Sand</button>
-        </div>
+    <section class="gallery-panel">
+      <div id="hero" class="hero-img" aria-label="Product image"></div>
+      <div class="thumbs">
+        <button class="thumb active" data-view="forest" type="button">Forest</button>
+        <button class="thumb" data-view="midnight" type="button">Midnight</button>
+        <button class="thumb" data-view="sand" type="button">Sand</button>
       </div>
-      <div class="right">
-        <p class="badge">Best Seller</p>
-        <h1>Nova X7 Wireless Headphones</h1>
-        <p>Adaptive ANC, studio-grade clarity, and 40-hour battery life.</p>
-
-        <div class="variant-row">
-          <label>Color</label>
-          <select id="color-select"><option>Forest</option><option>Midnight</option><option>Sand</option></select>
-        </div>
-
-        <h2 id="price">$129.00</h2>
-        <div class="qty-row">
-          <button id="minus" type="button">-</button>
-          <span id="qty">1</span>
-          <button id="plus" type="button">+</button>
-        </div>
-
-        <div class="ship-row">
-          <input aria-label="ZIP code" id="zip" placeholder="ZIP code" maxlength="10" />
-          <button id="check-ship" type="button" class="ghost">Check shipping</button>
-        </div>
-        <p id="ship-msg" class="muted"></p>
-
-        <button id="add">Add to Cart</button>
-        <p id="msg" role="status" aria-live="polite"></p>
-        <p class="cart">Cart items: <strong id="cart-count">0</strong></p>
-      </div>
+      <section class="reviews">
+        <h3>4.8/5 customer rating</h3>
+        <p>Based on 2,431 verified reviews.</p>
+      </section>
     </section>
+
+    <aside class="buy-panel">
+      <p class="badge">Best Seller</p>
+      <h1>Nova X7 Wireless Headphones</h1>
+      <p>Adaptive noise canceling, spatial audio, and 40-hour battery.</p>
+      <h2 id="price">$129.00</h2>
+
+      <label for="color-select">Color</label>
+      <select id="color-select"><option>Forest</option><option>Midnight</option><option>Sand</option></select>
+
+      <div class="qty-row">
+        <button id="minus" type="button">-</button>
+        <span id="qty">1</span>
+        <button id="plus" type="button">+</button>
+      </div>
+
+      <div class="ship-row">
+        <input aria-label="ZIP code" id="zip" placeholder="ZIP code" maxlength="10" />
+        <button id="check-ship" type="button" class="ghost">Check shipping</button>
+      </div>
+      <p id="ship-msg" class="muted"></p>
+
+      <button id="add" type="button">Add to Cart</button>
+      <p id="msg" role="status" aria-live="polite"></p>
+      <p class="cart">Cart items: <strong id="cart-count">0</strong></p>
+      <ul class="trust">
+        <li>Free 30-day returns</li>
+        <li>1-year warranty included</li>
+        <li>Secure checkout</li>
+      </ul>
+    </aside>
   </main>
+
+  <section class="tabs-wrap">
+    <div class="tabs">
+      <button class="tab active" data-tab="specs" type="button">Specifications</button>
+      <button class="tab" data-tab="box" type="button">In the Box</button>
+      <button class="tab" data-tab="warranty" type="button">Warranty</button>
+    </div>
+    <article id="tab-content" class="tab-content"></article>
+  </section>
+
   <script src="script.js"></script>
 </body>
 </html>
-
-
-

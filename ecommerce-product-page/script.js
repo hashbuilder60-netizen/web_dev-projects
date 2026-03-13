@@ -6,8 +6,10 @@ const colorSelect = document.getElementById("color-select");
 const cartCount = document.getElementById("cart-count");
 const priceEl = document.getElementById("price");
 const thumbs = [...document.querySelectorAll(".thumb")];
-const KEY = "nova_cart_count";
+const tabs = [...document.querySelectorAll(".tab")];
+const tabContent = document.getElementById("tab-content");
 
+const KEY = "nova_cart_count";
 let q = 1;
 let cart = Number(localStorage.getItem(KEY) || "0");
 cartCount.textContent = String(cart);
@@ -18,6 +20,11 @@ const palettes = {
   sand: "linear-gradient(120deg,#f8eedf,#e4cda8)"
 };
 const pricing = { Forest: 129, Midnight: 139, Sand: 134 };
+const tabData = {
+  specs: "Bluetooth 5.3, active noise canceling, 40-hour battery, USB-C fast charge, and multipoint pairing.",
+  box: "Headphones, carrying case, USB-C cable, 3.5mm audio cable, and quick start guide.",
+  warranty: "One-year limited warranty with optional two-year protection plan at checkout."
+};
 
 document.getElementById("plus").onclick = () => { q++; qty.textContent = q; };
 document.getElementById("minus").onclick = () => { if (q > 1) { q--; qty.textContent = q; } };
@@ -40,10 +47,16 @@ colorSelect.addEventListener("change", () => {
   const color = colorSelect.value;
   hero.style.background = palettes[color.toLowerCase()];
   priceEl.textContent = `$${pricing[color]}.00`;
-  thumbs.forEach((t) => t.classList.toggle("active", t.dataset.color.toLowerCase() === color.toLowerCase()));
+  thumbs.forEach((t) => t.classList.toggle("active", t.dataset.view.toLowerCase() === color.toLowerCase()));
 });
-
 thumbs.forEach((btn) => btn.addEventListener("click", () => {
   colorSelect.value = btn.textContent;
   colorSelect.dispatchEvent(new Event("change"));
 }));
+
+tabs.forEach((tab) => tab.addEventListener("click", () => {
+  tabs.forEach((t) => t.classList.remove("active"));
+  tab.classList.add("active");
+  tabContent.textContent = tabData[tab.dataset.tab];
+}));
+tabContent.textContent = tabData.specs;

@@ -1,19 +1,15 @@
 # E-commerce Product Page
 
-Advanced product detail page experience.
+Advanced product detail experience.
 
-## Features
-- Color variants and dynamic visuals
-- Dynamic pricing per variant
-- ZIP-based shipping estimator
-- Persistent cart counter via LocalStorage
+## Upgrades
+- Added immersive gallery + variant thumbnails
+- Added sticky buy panel with trust elements
+- Added reviews section and product detail tabs
+- Preserved shipping checker and persistent cart count
 
-## Accessibility
-- Live status updates for add-to-cart messages
-- Labeled ZIP input
-
-## SEO
-- Description + Open Graph tags in `index.html`
+## Inspiration Comparison
+- Inspired by premium product storytelling and purchase flow patterns used on Apple-style product pages.
 
 ## Run
 Open `index.html`.

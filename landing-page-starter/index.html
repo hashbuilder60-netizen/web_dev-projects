@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="High-conversion landing page starter with pricing toggle, FAQ, and responsive marketing sections." />
+  <meta name="description" content="LaunchKit Pro is a conversion-focused landing page inspired by leading SaaS websites." />
   <meta name="theme-color" content="#1f8a70" />
   <meta property="og:title" content="LaunchKit Pro" />
-  <meta property="og:description" content="High-conversion landing page starter with pricing toggle, FAQ, and responsive marketing sections." />
+  <meta property="og:description" content="Landing page template with social proof, pricing, testimonials, and FAQ." />
   <meta property="og:type" content="website" />
   <title>LaunchKit Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,31 +15,56 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="topbar">
+    <strong>LaunchKit Pro</strong>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="top-cta" type="button">Book Demo</button>
+  </header>
+
   <main class="wrap">
     <section class="hero">
-      <p class="tag">Growth Marketing Template</p>
-      <h1>Ship premium product pages in days, not weeks.</h1>
-      <p class="sub">LaunchKit combines strong visual hierarchy with conversion-focused sections.</p>
+      <p class="tag">Revenue-First Marketing Template</p>
+      <h1>Build trust fast, then convert with confidence.</h1>
+      <p class="sub">Inspired by enterprise SaaS homepages: strong headline, proof-first layout, and focused CTAs.</p>
       <div class="actions">
-        <a class="btn primary" href="#pricing">Get Started</a>
-        <a class="btn ghost" href="#features">See Features</a>
+        <a class="btn primary" href="#pricing">Start free</a>
+        <a class="btn ghost" href="#">Watch tour</a>
+      </div>
+      <div class="logos" aria-label="Trusted by companies">
+        <span>ORBITAL</span><span>PULSE</span><span>FINTRA</span><span>CLEARPAY</span><span>MOSAIC</span>
       </div>
     </section>
 
+    <section class="metrics">
+      <article><strong>+38%</strong><p>avg signup lift</p></article>
+      <article><strong>2.9x</strong><p>faster launch cycles</p></article>
+      <article><strong>99.95%</strong><p>uptime baseline</p></article>
+      <article><strong>150k+</strong><p>teams onboarded</p></article>
+    </section>
+
     <section id="features" class="grid">
-      <article><h2>Conversion-Ready</h2><p>Prebuilt storytelling blocks from hero to CTA.</p></article>
-      <article><h2>Component-Based</h2><p>Reusable sections for growth teams and founders.</p></article>
-      <article><h2>Fast to Customize</h2><p>Tokenized styling for quick brand adaptation.</p></article>
+      <article><h2>Proof-First Hero</h2><p>Lead with credibility before feature overload.</p></article>
+      <article><h2>Scalable Sections</h2><p>Reusable modules for product, platform, and sales pages.</p></article>
+      <article><h2>Conversion System</h2><p>CTA rhythm, social proof, and pricing logic built in.</p></article>
+    </section>
+
+    <section class="stories">
+      <h2>Customer stories</h2>
+      <div class="story-grid">
+        <article><h3>PulsePay</h3><p>Reduced drop-off by 22% in 6 weeks after relaunch.</p></article>
+        <article><h3>CloudDesk</h3><p>Increased qualified leads by 41% from the homepage alone.</p></article>
+        <article><h3>Mosaic AI</h3><p>Cut time-to-publish marketing pages from 5 days to 1 day.</p></article>
+      </div>
     </section>
 
     <section id="pricing" class="pricing">
       <div class="pricing-head">
         <h2>Pricing</h2>
-        <label class="toggle">
-          <span>Monthly</span>
-          <input id="billing-toggle" type="checkbox" />
-          <span>Yearly (20% off)</span>
-        </label>
+        <label class="toggle"><span>Monthly</span><input id="billing-toggle" type="checkbox" /><span>Yearly (20% off)</span></label>
       </div>
       <div class="plans">
         <article><h3>Starter</h3><p class="price" data-month="19" data-year="15">$19</p><small>/month</small></article>
@@ -48,15 +73,19 @@
       </div>
     </section>
 
-    <section class="faq">
+    <section class="testimonials">
+      <h2>What teams say</h2>
+      <blockquote id="quote">"We shipped a premium site in 3 days and it outperformed our previous one immediately."</blockquote>
+      <p id="quote-author">- Head of Growth, PulsePay</p>
+    </section>
+
+    <section id="faq" class="faq">
       <h2>FAQ</h2>
-      <details><summary>Can I use this for client projects?</summary><p>Yes, this template is project-safe and easy to white-label.</p></details>
-      <details><summary>Is this mobile friendly?</summary><p>Yes, the layout is fully responsive by default.</p></details>
-      <details><summary>Can I integrate with frameworks later?</summary><p>Yes, the structure is clean and easy to port into React/Vue.</p></details>
+      <details><summary>Can I use this for client projects?</summary><p>Yes. It is built for agencies and in-house teams.</p></details>
+      <details><summary>Is it framework-agnostic?</summary><p>Yes. You can port this layout into React, Vue, or static stacks.</p></details>
+      <details><summary>Can I customize pricing cards?</summary><p>Yes. Card content and price logic are fully editable.</p></details>
     </section>
   </main>
   <script src="script.js"></script>
 </body>
 </html>
-
-
