@@ -2,6 +2,7 @@ const f = document.getElementById("f");
 const city = document.getElementById("city");
 const unit = document.getElementById("unit");
 const current = document.getElementById("current");
+const hourly = document.getElementById("hourly");
 const forecast = document.getElementById("forecast");
 
 f.addEventListener("submit", async (e) => {
@@ -28,7 +29,7 @@ async function fetchByCity(name) {
   if (!name) return;
   current.textContent = "Loading...";
   const geo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(name)}&count=1`).then((r) => r.json());
-  if (!geo.results?.length) { current.textContent = "City not found."; forecast.innerHTML = ""; return; }
+  if (!geo.results?.length) { current.textContent = "City not found."; hourly.innerHTML = ""; forecast.innerHTML = ""; return; }
   const g = geo.results[0];
   fetchByCoords(g.latitude, g.longitude, `${g.name}, ${g.country}`);
 }
@@ -36,16 +37,32 @@ async function fetchByCity(name) {
 async function fetchByCoords(lat, lon, place) {
   const tempUnit = unit.checked ? "fahrenheit" : "celsius";
   const windUnit = unit.checked ? "mph" : "kmh";
-  const data = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&temperature_unit=${tempUnit}&wind_speed_unit=${windUnit}`).then((r) => r.json());
+  const data = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,wind_speed_10m,relative_humidity_2m&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min&timezone=auto&temperature_unit=${tempUnit}&wind_speed_unit=${windUnit}`).then((r) => r.json());
 
   current.dataset.lat = lat;
   current.dataset.lon = lon;
   current.dataset.place = place;
   const c = data.current;
   const symbol = unit.checked ? "F" : "C";
-  current.innerHTML = `<h2>${place}</h2><p>Temp: <strong>${c.temperature_2m}°${symbol}</strong> (feels ${c.apparent_temperature}°${symbol})</p><p>Wind: <strong>${c.wind_speed_10m}</strong> ${unit.checked ? "mph" : "km/h"}</p>`;
+  current.innerHTML = `<h2>${place}</h2><p>Temp: <strong>${c.temperature_2m}°${symbol}</strong> (feels ${c.apparent_temperature}°${symbol})</p><p>Humidity: <strong>${c.relative_humidity_2m}%</strong></p><p>Wind: <strong>${c.wind_speed_10m}</strong> ${unit.checked ? "mph" : "km/h"}</p>`;
 
-  const days = data.daily.time.slice(0, 3).map((d, i) => ({ date: d, max: data.daily.temperature_2m_max[i], min: data.daily.temperature_2m_min[i] }));
+  const nowIdx = data.hourly.time.findIndex((t) => t === data.current.time);
+  const start = nowIdx >= 0 ? nowIdx : 0;
+  const hours = data.hourly.time.slice(start, start + 6).map((t, i) => ({
+    time: t,
+    temp: data.hourly.temperature_2m[start + i],
+    rain: data.hourly.precipitation_probability[start + i]
+  }));
+  hourly.innerHTML = "";
+  hours.forEach((h) => {
+    const card = document.createElement("article");
+    card.className = "hour";
+    const label = new Date(h.time).toLocaleTimeString([], { hour: "numeric" });
+    card.innerHTML = `<strong>${label}</strong><p>${h.temp}°${symbol}</p><p>${h.rain ?? 0}% rain</p>`;
+    hourly.appendChild(card);
+  });
+
+  const days = data.daily.time.slice(0, 5).map((d, i) => ({ date: d, max: data.daily.temperature_2m_max[i], min: data.daily.temperature_2m_min[i] }));
   forecast.innerHTML = "";
   days.forEach((d) => {
     const card = document.createElement("article");

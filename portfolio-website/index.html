@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Interactive developer portfolio with project filters, modal details, and modern responsive layout." />
+  <meta name="description" content="Portfolio website inspired by top creator and agency sites with case-study storytelling and conversion CTAs." />
   <meta name="theme-color" content="#1f8a70" />
   <meta property="og:title" content="Ada Dev Portfolio Pro" />
-  <meta property="og:description" content="Interactive developer portfolio with project filters, modal details, and modern responsive layout." />
+  <meta property="og:description" content="Filterable case studies, proof metrics, client testimonials, and project inquiry flow." />
   <meta property="og:type" content="website" />
   <title>Ada Dev Portfolio Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,36 +15,61 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
+  <header class="topbar">
+    <strong>Ada Dev</strong>
     <nav>
-      <h1>Ada Dev</h1>
       <a href="#work">Work</a>
+      <a href="#proof">Proof</a>
       <a href="#contact">Contact</a>
     </nav>
-    <section class="hero">
-      <p class="kicker">Frontend Engineer</p>
-      <h2>Designing digital products users enjoy and teams can scale.</h2>
-      <p>I build fast interfaces with clear UX and strong conversion outcomes.</p>
-    </section>
+    <button id="theme-toggle" type="button">Light/Dark</button>
   </header>
 
-  <main>
+  <section class="hero">
+    <p class="kicker">Product-Focused Frontend Engineer</p>
+    <h1>Designing fast interfaces that move business metrics.</h1>
+    <p>I help startups and SaaS teams turn product complexity into clear, high-converting experiences.</p>
+    <div class="hero-metrics">
+      <article><strong>34%</strong><span>trial lift</span></article>
+      <article><strong>2.3x</strong><span>faster ship cycles</span></article>
+      <article><strong>17+</strong><span>products launched</span></article>
+    </div>
+  </section>
+
+  <main class="wrap">
     <section id="work" class="panel">
       <div class="head">
-        <h3>Selected Work</h3>
+        <h2>Case Studies</h2>
         <div class="filters">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="marketing">Marketing</button>
-          <button class="filter" data-filter="dashboard">Dashboard</button>
-          <button class="filter" data-filter="commerce">Commerce</button>
+          <button class="filter active" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="saas" type="button">SaaS</button>
+          <button class="filter" data-filter="fintech" type="button">Fintech</button>
+          <button class="filter" data-filter="commerce" type="button">Commerce</button>
         </div>
       </div>
       <div id="cards" class="grid"></div>
     </section>
 
-    <section id="contact" class="panel contact">
-      <h3>Available for projects</h3>
-      <p>Email: hello@adadev.dev</p>
+    <section id="proof" class="panel proof">
+      <h2>Client Feedback</h2>
+      <blockquote id="quote">"Ada transformed our dashboard UX and reduced support tickets in under one quarter."</blockquote>
+      <p id="quote-author">- VP Product, CloudDesk</p>
+    </section>
+
+    <section id="contact" class="panel">
+      <h2>Project Inquiry</h2>
+      <form id="lead-form" class="lead-form">
+        <input id="lead-name" aria-label="Your name" placeholder="Your name" required />
+        <input id="lead-email" aria-label="Your email" type="email" placeholder="Your email" required />
+        <select id="lead-budget" aria-label="Budget">
+          <option value="">Budget range</option>
+          <option>$5k-$15k</option>
+          <option>$15k-$40k</option>
+          <option>$40k+</option>
+        </select>
+        <button type="submit">Send Inquiry</button>
+      </form>
+      <p id="lead-msg" role="status" aria-live="polite"></p>
     </section>
   </main>
 
@@ -52,6 +77,7 @@
     <form method="dialog" class="modal">
       <h3 id="modal-title"></h3>
       <p id="modal-desc"></p>
+      <p id="modal-result"></p>
       <button type="submit">Close</button>
     </form>
   </dialog>
@@ -59,5 +85,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-

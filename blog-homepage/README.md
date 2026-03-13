@@ -1,17 +1,15 @@
 # Blog Homepage
 
-Dynamic blog front-end with content filtering.
+Editorial blog homepage with discovery and growth-focused sections.
 
-## Features
-- Search by title/summary
-- Category filtering
-- Dynamic card rendering from data source
+## Upgrades
+- Featured story block
+- Search + category + sort controls
+- Dynamic feed rendering
+- Newsletter signup section
 
-## Accessibility
-- Labeled search and category controls
-
-## SEO
-- Description + Open Graph tags in `index.html`
+## Inspiration Comparison
+- Inspired by editorial structure and reader flow patterns used by Medium and Substack.
 
 ## Run
 Open `index.html`.

@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Dynamic blog homepage with search, category filtering, and editorial card layout." />
+  <meta name="description" content="Editorial blog homepage inspired by Medium and Substack patterns with featured story, search, and topic filters." />
   <meta name="theme-color" content="#1f8a70" />
   <meta property="og:title" content="Dev Journal Pro" />
-  <meta property="og:description" content="Dynamic blog homepage with search, category filtering, and editorial card layout." />
+  <meta property="og:description" content="Editorial feed with featured post, search, category filtering, and newsletter signup." />
   <meta property="og:type" content="website" />
   <title>Dev Journal Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,15 +17,25 @@
 <body>
   <header>
     <h1>Dev Journal</h1>
-    <p>Design, code, and product strategy.</p>
+    <p>Thoughtful writing on product, code, and career.</p>
+    <section class="featured" aria-label="Featured article">
+      <span>Featured</span>
+      <h2 id="featured-title">Designing Product-Led Onboarding That Converts</h2>
+      <p id="featured-summary">A practical breakdown of onboarding moments that influence trial-to-paid conversion.</p>
+      <a href="#">Read featured story</a>
+    </section>
     <div class="toolbar">
       <input aria-label="Search posts" id="search" type="search" placeholder="Search posts" />
       <select aria-label="Filter category" id="category">
-        <option value="all">All</option>
+        <option value="all">All topics</option>
         <option value="css">CSS</option>
         <option value="javascript">JavaScript</option>
         <option value="career">Career</option>
         <option value="product">Product</option>
+      </select>
+      <select aria-label="Sort posts" id="sort">
+        <option value="new">Newest</option>
+        <option value="popular">Most popular</option>
       </select>
     </div>
   </header>
@@ -33,9 +43,15 @@
   <main id="posts" class="grid"></main>
   <p id="empty" class="empty">No posts match your filters.</p>
 
+  <section class="newsletter">
+    <h2>Join the weekly newsletter</h2>
+    <form id="news-form">
+      <input id="news-email" type="email" placeholder="Email address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p id="news-msg" role="status" aria-live="polite"></p>
+  </section>
+
   <script src="script.js"></script>
 </body>
 </html>
-
-
-

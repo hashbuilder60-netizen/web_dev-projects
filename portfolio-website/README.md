@@ -1,17 +1,15 @@
 # Portfolio Website
 
-Interactive portfolio front-end with filtering and modal details.
+Premium portfolio frontend with product-case-study storytelling.
 
-## Features
-- Project category filters
-- Modal project details
-- Clean responsive structure
+## Upgrades
+- Sticky nav + theme toggle
+- Filterable case studies with impact chips
+- Testimonial rotation
+- Inquiry form with validation feedback
 
-## Accessibility
-- Semantic landmarks and explicit interactive controls
-
-## SEO
-- Description + Open Graph tags in `index.html`
+## Inspiration Comparison
+- Inspired by modern creator/agency portfolio patterns from Webflow and Framer ecosystem sites.
 
 ## Run
 Open `index.html`.

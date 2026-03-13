@@ -1,19 +1,15 @@
 # Weather App
 
-Weather dashboard powered by Open-Meteo APIs.
+Interactive weather dashboard with current, hourly, and multi-day views.
 
-## Features
-- City search
-- Geolocation support
-- Celsius/Fahrenheit toggle
-- 3-day forecast cards
+## Upgrades
+- City search + geolocation
+- Fahrenheit/Celsius unit switch
+- Hourly weather cards
+- 5-day forecast panel
 
-## Accessibility
-- Current weather section uses `role="status"` + `aria-live`
-- Forecast section includes descriptive `aria-label`
-
-## SEO
-- Description + Open Graph tags in `index.html`
+## Inspiration Comparison
+- Inspired by modern weather dashboard patterns seen in AccuWeather and Apple Weather style apps.
 
 ## Run
 Open `index.html`.

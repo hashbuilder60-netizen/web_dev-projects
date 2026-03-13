@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Timed frontend quiz with progress tracking, instant feedback, and local high score storage." />
+  <meta name="description" content="Gamified frontend quiz inspired by engagement patterns from modern learning and trivia apps." />
   <meta name="theme-color" content="#1f8a70" />
   <meta property="og:title" content="Quiz App Pro" />
-  <meta property="og:description" content="Timed frontend quiz with progress tracking, instant feedback, and local high score storage." />
+  <meta property="og:description" content="Timed quiz with streaks, categories, difficulty settings, and high-score tracking." />
   <meta property="og:type" content="website" />
   <title>Quiz App Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,21 +21,21 @@
       <p>High score: <strong id="high">0</strong></p>
     </div>
 
-    <div class="meta">
-      <p id="step">Question 1</p>
-      <p id="timer">20s</p>
-    </div>
-    <div class="bar"><div id="bar-fill"></div></div>
+    <form id="setup" class="setup">
+      <select id="category"><option value="all">All categories</option><option value="html">HTML</option><option value="css">CSS</option><option value="js">JavaScript</option></select>
+      <select id="difficulty"><option value="mixed">Mixed difficulty</option><option value="easy">Easy</option><option value="medium">Medium</option><option value="hard">Hard</option></select>
+      <button type="submit">Start Quiz</button>
+    </form>
 
-    <p id="q"></p>
-    <div id="choices"></div>
-
-    <p id="feedback" role="status" aria-live="polite"></p>
-    <button id="next">Next</button>
+    <section id="quiz" class="hidden">
+      <div class="meta"><p id="step">Question 1</p><p id="timer">20s</p><p id="streak">Streak: 0</p></div>
+      <div class="bar"><div id="bar-fill"></div></div>
+      <p id="q"></p>
+      <div id="choices"></div>
+      <p id="feedback" role="status" aria-live="polite"></p>
+      <button id="next" type="button">Next</button>
+    </section>
   </main>
   <script src="script.js"></script>
 </body>
 </html>
-
-
-

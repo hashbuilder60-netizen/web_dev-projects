@@ -1,18 +1,15 @@
 # Quiz App
 
-Timed frontend quiz with progress tracking.
+Gamified quiz experience with richer engagement mechanics.
 
-## Features
-- Countdown timer per question
-- Progress bar and step indicator
-- Instant answer feedback
-- Local high-score persistence
+## Upgrades
+- Category + difficulty setup
+- Timer, streak tracking, and progress bar
+- Instant feedback and persistent high score
+- Replay flow
 
-## Accessibility
-- Feedback region uses `role="status"` + `aria-live`
-
-## SEO
-- Description + Open Graph tags in `index.html`
+## Inspiration Comparison
+- Inspired by engagement loops from Kahoot- and Duolingo-style quiz/learning products.
 
 ## Run
 Open `index.html`.
