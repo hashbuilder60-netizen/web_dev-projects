@@ -1,12 +1,19 @@
 # FocusFlow Task Planner
 
-A clean and responsive productivity app built with vanilla HTML, CSS, and JavaScript.
+Advanced task management app built with vanilla HTML/CSS/JS.
 
 ## Features
-- Add, complete, and delete tasks
-- Persist tasks with localStorage
-- Progress stats (total, completed, percent)
-- Mobile-friendly layout
+- Priority levels and due dates
+- Search, status filter, and sorting
+- Overdue and progress analytics
+- LocalStorage persistence
+
+## Accessibility
+- Inputs include explicit `aria-label` attributes
+- Dynamic updates are presented in predictable sections
+
+## SEO
+- Description + Open Graph meta tags included in `index.html`
 
 ## Run
-Open `index.html` in your browser.
+Open `index.html`.

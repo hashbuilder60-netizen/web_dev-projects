@@ -5,41 +5,20 @@ Frontend mini-project collection by **hashbuilder60-netizen**.
 ## Live Site
 - [GitHub Pages](https://hashbuilder60-netizen.github.io/web_dev-projects/)
 
-## Projects
-### 1) FocusFlow Task Planner
-Path: `focusflow-task-planner/`
+## Project List
+1. `focusflow-task-planner/`
+2. `landing-page-starter/`
+3. `portfolio-website/`
+4. `ecommerce-product-page/`
+5. `blog-homepage/`
+6. `weather-app/`
+7. `quiz-app/`
 
-![FocusFlow](assets/previews/focusflow-preview.svg)
-
-### 2) Landing Page Starter
-Path: `landing-page-starter/`
-
-![Landing Page](assets/previews/landing-page-preview.svg)
-
-### 3) Portfolio Website
-Path: `portfolio-website/`
-
-![Portfolio](assets/previews/portfolio-preview.svg)
-
-### 4) E-commerce Product Page
-Path: `ecommerce-product-page/`
-
-![Ecommerce](assets/previews/ecommerce-preview.svg)
-
-### 5) Blog Homepage
-Path: `blog-homepage/`
-
-![Blog](assets/previews/blog-preview.svg)
-
-### 6) Weather App
-Path: `weather-app/`
-
-![Weather](assets/previews/weather-preview.svg)
-
-### 7) Quiz App
-Path: `quiz-app/`
-
-![Quiz](assets/previews/quiz-preview.svg)
+## Quality Improvements
+- Advanced UX upgrades across all projects
+- Accessibility pass (labels, live regions, semantic controls)
+- SEO pass (meta descriptions + Open Graph tags)
+- Project-level documentation refreshed
 
 ## License
 MIT - see `LICENSE`.

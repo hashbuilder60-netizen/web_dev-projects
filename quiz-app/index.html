@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Timed frontend quiz with progress tracking, instant feedback, and local high score storage." />
+  <meta name="theme-color" content="#1f8a70" />
+  <meta property="og:title" content="Quiz App Pro" />
+  <meta property="og:description" content="Timed frontend quiz with progress tracking, instant feedback, and local high score storage." />
+  <meta property="og:type" content="website" />
   <title>Quiz App Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +30,12 @@
     <p id="q"></p>
     <div id="choices"></div>
 
-    <p id="feedback"></p>
+    <p id="feedback" role="status" aria-live="polite"></p>
     <button id="next">Next</button>
   </main>
   <script src="script.js"></script>
 </body>
 </html>
+
+
+

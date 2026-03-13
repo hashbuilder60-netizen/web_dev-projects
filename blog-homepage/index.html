@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Dynamic blog homepage with search, category filtering, and editorial card layout." />
+  <meta name="theme-color" content="#1f8a70" />
+  <meta property="og:title" content="Dev Journal Pro" />
+  <meta property="og:description" content="Dynamic blog homepage with search, category filtering, and editorial card layout." />
+  <meta property="og:type" content="website" />
   <title>Dev Journal Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +19,8 @@
     <h1>Dev Journal</h1>
     <p>Design, code, and product strategy.</p>
     <div class="toolbar">
-      <input id="search" type="search" placeholder="Search posts" />
-      <select id="category">
+      <input aria-label="Search posts" id="search" type="search" placeholder="Search posts" />
+      <select aria-label="Filter category" id="category">
         <option value="all">All</option>
         <option value="css">CSS</option>
         <option value="javascript">JavaScript</option>
@@ -31,3 +36,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+

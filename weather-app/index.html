@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Weather dashboard with city lookup, geolocation, unit toggle, and 3-day forecast." />
+  <meta name="theme-color" content="#1f8a70" />
+  <meta property="og:title" content="Weather Pro" />
+  <meta property="og:description" content="Weather dashboard with city lookup, geolocation, unit toggle, and 3-day forecast." />
+  <meta property="og:type" content="website" />
   <title>Weather Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +20,8 @@
     <p>Live weather + 3-day forecast.</p>
 
     <form id="f" class="row">
-      <input id="city" placeholder="Enter city" required/>
-      <button>Search</button>
+      <input aria-label="City name" id="city" placeholder="Enter city" required/>
+      <button type="submit">Search</button>
     </form>
 
     <div class="controls">
@@ -24,9 +29,12 @@
       <label><input id="unit" type="checkbox"/> Fahrenheit</label>
     </div>
 
-    <section id="current" class="panel"></section>
-    <section id="forecast" class="forecast"></section>
+    <section id="current" class="panel" role="status" aria-live="polite"></section>
+    <section id="forecast" class="forecast" aria-label="3 day forecast"></section>
   </main>
   <script src="script.js"></script>
 </body>
 </html>
+
+
+

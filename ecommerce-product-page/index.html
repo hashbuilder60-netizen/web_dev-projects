@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Advanced ecommerce product detail page with variants, shipping checker, and persistent cart state." />
+  <meta name="theme-color" content="#1f8a70" />
+  <meta property="og:title" content="Nova X7 Product Experience" />
+  <meta property="og:description" content="Advanced ecommerce product detail page with variants, shipping checker, and persistent cart state." />
+  <meta property="og:type" content="website" />
   <title>Nova X7 Product Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,13 +43,13 @@
         </div>
 
         <div class="ship-row">
-          <input id="zip" placeholder="ZIP code" maxlength="10" />
+          <input aria-label="ZIP code" id="zip" placeholder="ZIP code" maxlength="10" />
           <button id="check-ship" type="button" class="ghost">Check shipping</button>
         </div>
         <p id="ship-msg" class="muted"></p>
 
         <button id="add">Add to Cart</button>
-        <p id="msg"></p>
+        <p id="msg" role="status" aria-live="polite"></p>
         <p class="cart">Cart items: <strong id="cart-count">0</strong></p>
       </div>
     </section>
@@ -52,3 +57,6 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
