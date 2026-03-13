@@ -1,0 +1,280 @@
+:root {
+  --bg: #f3f5ec;
+  --panel: #ffffff;
+  --ink: #1c2533;
+  --muted: #5d6b7d;
+  --accent: #e66c37;
+  --accent-strong: #ce4d1a;
+  --ok: #1f8f5f;
+  --ring: rgba(230, 108, 55, 0.35);
+  --shadow: 0 14px 35px rgba(28, 37, 51, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 15%, #fbe4d8 0%, transparent 35%),
+              radial-gradient(circle at 85% 10%, #d7efe4 0%, transparent 35%),
+              var(--bg);
+  padding: 2rem 1rem 3rem;
+  overflow-x: hidden;
+}
+
+.bg-shape {
+  position: fixed;
+  border-radius: 999px;
+  z-index: -1;
+  opacity: 0.55;
+  filter: blur(14px);
+}
+
+.shape-one {
+  width: 320px;
+  height: 320px;
+  background: #ffd7a6;
+  top: -120px;
+  left: -70px;
+}
+
+.shape-two {
+  width: 260px;
+  height: 260px;
+  background: #8cd4ba;
+  right: -70px;
+  bottom: -90px;
+}
+
+.app {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.hero {
+  margin-bottom: 1rem;
+  animation: fadeIn 700ms ease-out;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #fff2e9;
+  border-radius: 999px;
+  color: #b34418;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  max-width: 48ch;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 18px;
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  margin-top: 1rem;
+  animation: riseUp 500ms ease-out;
+}
+
+h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #d9dfeb;
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  font: inherit;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+  background: var(--accent);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+button:hover {
+  background: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.tasks-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ghost-btn {
+  background: #ecf0f6;
+  color: #314255;
+  font-size: 0.92rem;
+}
+
+.ghost-btn:hover {
+  background: #dde4ef;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0.7rem;
+  border: 1px solid #e5ebf2;
+  border-radius: 12px;
+  background: #fbfcfe;
+}
+
+.task input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--ok);
+  cursor: pointer;
+}
+
+.task-text {
+  word-break: break-word;
+}
+
+.task.done .task-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.delete-btn {
+  background: transparent;
+  color: #9ba9bb;
+  padding: 0.45rem 0.6rem;
+}
+
+.delete-btn:hover {
+  color: #c13f33;
+  background: #fff0ef;
+}
+
+.empty {
+  color: var(--muted);
+  margin: 0.8rem 0 0;
+}
+
+.stats {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.stat-card {
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  padding: 0.9rem;
+  animation: riseUp 650ms ease-out;
+}
+
+.stat-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.stat-card strong {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 1.55rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes riseUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 680px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

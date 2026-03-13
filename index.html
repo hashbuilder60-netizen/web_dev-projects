@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusFlow - Daily Task Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-shape shape-one"></div>
+  <div class="bg-shape shape-two"></div>
+
+  <main class="app">
+    <header class="hero">
+      <p class="badge">Personal Productivity</p>
+      <h1>FocusFlow</h1>
+      <p class="subtitle">Plan your day, track progress, and stay consistent.</p>
+    </header>
+
+    <section class="panel input-panel">
+      <h2>Add Task</h2>
+      <form id="task-form">
+        <label for="task-input">What needs to be done?</label>
+        <div class="row">
+          <input id="task-input" type="text" placeholder="e.g. Build portfolio homepage" maxlength="120" required />
+          <button type="submit">Add</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="tasks-head">
+        <h2>Today's Tasks</h2>
+        <button id="clear-completed" class="ghost-btn" type="button">Clear Completed</button>
+      </div>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-state" class="empty">No tasks yet. Add your first one.</p>
+    </section>
+
+    <section class="stats" id="stats">
+      <article class="stat-card">
+        <p>Total</p>
+        <strong id="total-count">0</strong>
+      </article>
+      <article class="stat-card">
+        <p>Completed</p>
+        <strong id="done-count">0</strong>
+      </article>
+      <article class="stat-card">
+        <p>Progress</p>
+        <strong id="progress-count">0%</strong>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
