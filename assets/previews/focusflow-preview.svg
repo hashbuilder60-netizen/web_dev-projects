@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fbe4d8"/>
+      <stop offset="100%" stop-color="#d7efe4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g)"/>
+  <rect x="120" y="120" width="1040" height="480" rx="24" fill="#ffffff"/>
+  <text x="170" y="220" font-size="56" font-family="Segoe UI" fill="#1c2533">FocusFlow Task Planner</text>
+  <rect x="170" y="280" width="760" height="64" rx="12" fill="#f3f7fb"/>
+  <rect x="950" y="280" width="160" height="64" rx="12" fill="#e66c37"/>
+  <rect x="170" y="380" width="940" height="72" rx="12" fill="#fbfcfe" stroke="#d9dfeb"/>
+  <rect x="170" y="468" width="940" height="72" rx="12" fill="#fbfcfe" stroke="#d9dfeb"/>
+</svg>

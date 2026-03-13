@@ -1,13 +1,24 @@
 # web_dev-projects
 
-Collection of web development projects.
+Frontend mini-project collection by **hashbuilder60-netizen**.
+
+## Live Site
+- [GitHub Pages](https://hashbuilder60-netizen.github.io/web_dev-projects/)
 
 ## Projects
-- `focusflow-task-planner`: A responsive task planner built with HTML, CSS, and JavaScript.
+1. **FocusFlow Task Planner**
+Path: `focusflow-task-planner/`
 
-## Run
-Open:
-- `focusflow-task-planner/index.html`
+![FocusFlow Preview](assets/previews/focusflow-preview.svg)
 
-## GitHub
-Remote: `https://github.com/hashbuilder60-netizen/web_dev-projects.git`
+2. **Landing Page Starter**
+Path: `landing-page-starter/`
+
+![Landing Page Preview](assets/previews/landing-page-preview.svg)
+
+## Run Locally
+1. Open `index.html` in the repo root (project directory).
+2. Click into any project card.
+
+## License
+MIT - see `LICENSE`.
