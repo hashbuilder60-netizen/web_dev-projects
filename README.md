@@ -2,7 +2,7 @@
 
 Portfolio-grade frontend project collection by **hashbuilder60-netizen**.
 
-[![Deploy GitHub Pages](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml)
+[![Deploy GitHub Pages](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)
 
 ## Recruiter Snapshot
 - Role fit: Junior-to-mid Frontend Engineer (HTML, CSS, JavaScript)
