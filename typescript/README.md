@@ -5,6 +5,11 @@ These files are TypeScript versions of selected apps for advanced-language demon
 ## Included
 - `typescript/quiz-app.ts`
 - `typescript/weather-app.ts`
+- `typescript/focusflow-task-planner.ts`
+- `typescript/landing-page-starter.ts`
+- `typescript/portfolio-website.ts`
+- `typescript/blog-homepage.ts`
+- `typescript/ecommerce-product-page.ts`
 
 ## Compile (optional)
 1. Install TypeScript: `npm i -D typescript`
