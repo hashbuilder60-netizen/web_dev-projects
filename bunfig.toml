@@ -1,0 +1,6 @@
+# bun support
+[install]
+registry = "https://registry.npmjs.org"
+
+[run]
+`default` = "npm run build:ts"

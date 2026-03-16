@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "web-dev-projects-tools"
+version = "0.1.0"
+description = "Tooling helpers for the web_dev-projects repo"
+authors = ["hashbuilder60-netizen"]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
