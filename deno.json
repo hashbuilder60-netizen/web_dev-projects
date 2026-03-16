@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "build": "npm run build:ts",
+    "serve": "python tools/workflow.py serve 8000"
+  }
+}
