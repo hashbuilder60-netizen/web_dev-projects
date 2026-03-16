@@ -1,14 +1,63 @@
 const ALL = [
-  { q: "What does CSS stand for?", a: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style System"], c: 1, cat: "css", d: "easy" },
-  { q: "Which method converts JSON text to an object?", a: ["JSON.parse", "JSON.stringify", "JSON.objectify"], c: 0, cat: "js", d: "easy" },
-  { q: "Which HTML tag links JavaScript?", a: ["<javascript>", "<js>", "<script>"], c: 2, cat: "html", d: "easy" },
-  { q: "Which CSS unit is relative to root font-size?", a: ["em", "rem", "vh"], c: 1, cat: "css", d: "medium" },
-  { q: "What does Array.prototype.map return?", a: ["A new transformed array", "A boolean", "Nothing"], c: 0, cat: "js", d: "medium" },
-  { q: "What attribute improves image LCP?", a: ["priority", "decoding", "fetchpriority"], c: 2, cat: "html", d: "hard" },
-  { q: "Which JS concept enables closures?", a: ["Lexical scoping", "Hoisting only", "Type coercion"], c: 0, cat: "js", d: "hard" }
+  {
+    q: "What does CSS stand for?",
+    a: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style System"],
+    c: 1,
+    cat: "css",
+    d: "easy",
+    exp: "CSS means Cascading Style Sheets, where rules can cascade by specificity and source order."
+  },
+  {
+    q: "Which method converts JSON text to an object?",
+    a: ["JSON.parse", "JSON.stringify", "JSON.objectify"],
+    c: 0,
+    cat: "js",
+    d: "easy",
+    exp: "JSON.parse converts JSON text into a JavaScript object."
+  },
+  {
+    q: "Which HTML tag links JavaScript?",
+    a: ["<javascript>", "<js>", "<script>"],
+    c: 2,
+    cat: "html",
+    d: "easy",
+    exp: "The script tag is the standard HTML element for JavaScript."
+  },
+  {
+    q: "Which CSS unit is relative to root font-size?",
+    a: ["em", "rem", "vh"],
+    c: 1,
+    cat: "css",
+    d: "medium",
+    exp: "rem is based on the root (html) font size, while em is based on the current element."
+  },
+  {
+    q: "What does Array.prototype.map return?",
+    a: ["A new transformed array", "A boolean", "Nothing"],
+    c: 0,
+    cat: "js",
+    d: "medium",
+    exp: "map always returns a new array containing transformed items."
+  },
+  {
+    q: "What attribute improves image request priority in modern browsers?",
+    a: ["priority", "decoding", "fetchpriority"],
+    c: 2,
+    cat: "html",
+    d: "hard",
+    exp: "fetchpriority can hint importance for loading resources like LCP images."
+  },
+  {
+    q: "Which JS concept enables closures?",
+    a: ["Lexical scoping", "Hoisting only", "Type coercion"],
+    c: 0,
+    cat: "js",
+    d: "hard",
+    exp: "Closures work because functions keep access to lexical scope where they were created."
+  }
 ];
 
-const HIGH_KEY = "quiz_pro_highscore_v2";
+const HIGH_KEY = "quiz_pro_highscore_v3";
 const highEl = document.getElementById("high");
 const qEl = document.getElementById("q");
 const choicesEl = document.getElementById("choices");
@@ -16,18 +65,22 @@ const stepEl = document.getElementById("step");
 const timerEl = document.getElementById("timer");
 const streakEl = document.getElementById("streak");
 const feedbackEl = document.getElementById("feedback");
+const explanationEl = document.getElementById("explanation");
 const nextBtn = document.getElementById("next");
 const barFill = document.getElementById("bar-fill");
 const setup = document.getElementById("setup");
 const quizWrap = document.getElementById("quiz");
 
-let qs = [];
-let i = 0;
-let score = 0;
-let streak = 0;
-let locked = false;
-let timeLeft = 20;
-let timer;
+const state = {
+  questions: [],
+  index: 0,
+  score: 0,
+  streak: 0,
+  locked: false,
+  timeLeft: 20,
+  timer: null,
+  finished: false
+};
 
 highEl.textContent = localStorage.getItem(HIGH_KEY) || "0";
 
@@ -35,34 +88,55 @@ setup.addEventListener("submit", (e) => {
   e.preventDefault();
   const cat = document.getElementById("category").value;
   const diff = document.getElementById("difficulty").value;
-  qs = pickQuestions(cat, diff);
-  if (!qs.length) qs = pickQuestions("all", "mixed");
-  i = 0; score = 0; streak = 0;
+  const count = Number(document.getElementById("count").value);
+
+  state.questions = pickQuestions(cat, diff, count);
+  if (!state.questions.length) {
+    state.questions = pickQuestions("all", "mixed", count);
+  }
+
+  state.index = 0;
+  state.score = 0;
+  state.streak = 0;
+  state.finished = false;
   setup.classList.add("hidden");
   quizWrap.classList.remove("hidden");
+  nextBtn.textContent = "Next";
   render();
 });
 
 nextBtn.addEventListener("click", () => {
-  if (!locked) { feedbackEl.textContent = "Choose an answer first."; return; }
-  i++;
-  if (i >= qs.length) return finish();
+  if (state.finished) {
+    location.reload();
+    return;
+  }
+  if (!state.locked) {
+    feedbackEl.textContent = "Choose an answer first.";
+    return;
+  }
+  state.index += 1;
+  if (state.index >= state.questions.length) {
+    finish();
+    return;
+  }
   render();
 });
 
-function pickQuestions(cat, diff) {
+function pickQuestions(cat, diff, count) {
   let rows = ALL.filter((q) => cat === "all" || q.cat === cat);
   rows = rows.filter((q) => diff === "mixed" || q.d === diff);
-  return shuffle([...rows]).slice(0, 5);
+  return shuffle([...rows]).slice(0, Math.min(count, rows.length));
 }
 
 function render() {
-  locked = false;
+  state.locked = false;
   feedbackEl.textContent = "";
-  const item = qs[i];
-  stepEl.textContent = `Question ${i + 1} / ${qs.length}`;
-  streakEl.textContent = `Streak: ${streak}`;
-  barFill.style.width = `${Math.round((i / qs.length) * 100)}%`;
+  explanationEl.textContent = "";
+
+  const item = state.questions[state.index];
+  stepEl.textContent = `Question ${state.index + 1} / ${state.questions.length}`;
+  streakEl.textContent = `Streak: ${state.streak}`;
+  barFill.style.width = `${Math.round((state.index / state.questions.length) * 100)}%`;
   qEl.textContent = item.q;
   choicesEl.innerHTML = "";
 
@@ -75,65 +149,70 @@ function render() {
     choicesEl.appendChild(btn);
   });
 
-  clearInterval(timer);
-  timeLeft = 20;
-  timerEl.textContent = `${timeLeft}s`;
-  timer = setInterval(() => {
-    timeLeft--;
-    timerEl.textContent = `${timeLeft}s`;
-    if (timeLeft <= 0) {
-      clearInterval(timer);
+  clearInterval(state.timer);
+  state.timeLeft = 20;
+  timerEl.textContent = `${state.timeLeft}s`;
+  state.timer = setInterval(() => {
+    state.timeLeft -= 1;
+    timerEl.textContent = `${state.timeLeft}s`;
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timer);
       autoLock();
     }
   }, 1000);
 }
 
 function choose(index, btn) {
-  if (locked) return;
-  locked = true;
-  clearInterval(timer);
-  const correct = qs[i].c;
+  if (state.locked) return;
+  state.locked = true;
+  clearInterval(state.timer);
+  const item = state.questions[state.index];
+  const correct = item.c;
+
   if (index === correct) {
-    score++;
-    streak++;
+    state.score += 1;
+    state.streak += 1;
     btn.classList.add("correct");
-    feedbackEl.textContent = streak >= 2 ? `Correct. ${streak} streak.` : "Correct.";
+    feedbackEl.textContent = state.streak >= 2 ? `Correct. ${state.streak} streak.` : "Correct.";
   } else {
-    streak = 0;
+    state.streak = 0;
     btn.classList.add("wrong");
     choicesEl.children[correct].classList.add("correct");
     feedbackEl.textContent = "Not quite.";
   }
-  streakEl.textContent = `Streak: ${streak}`;
+  explanationEl.textContent = item.exp;
+  streakEl.textContent = `Streak: ${state.streak}`;
 }
 
 function autoLock() {
-  if (locked) return;
-  locked = true;
-  streak = 0;
-  const correct = qs[i].c;
-  choicesEl.children[correct].classList.add("correct");
+  if (state.locked) return;
+  state.locked = true;
+  state.streak = 0;
+  const item = state.questions[state.index];
+  choicesEl.children[item.c].classList.add("correct");
   feedbackEl.textContent = "Time up.";
-  streakEl.textContent = `Streak: ${streak}`;
+  explanationEl.textContent = item.exp;
+  streakEl.textContent = `Streak: ${state.streak}`;
 }
 
 function finish() {
-  clearInterval(timer);
+  clearInterval(state.timer);
+  state.finished = true;
   const prevHigh = Number(localStorage.getItem(HIGH_KEY) || "0");
-  if (score > prevHigh) {
-    localStorage.setItem(HIGH_KEY, String(score));
-    highEl.textContent = String(score);
+  if (state.score > prevHigh) {
+    localStorage.setItem(HIGH_KEY, String(state.score));
+    highEl.textContent = String(state.score);
   }
   barFill.style.width = "100%";
-  qEl.textContent = `Quiz complete. Score: ${score}/${qs.length}`;
+  qEl.textContent = `Quiz complete. Score: ${state.score}/${state.questions.length}`;
   choicesEl.innerHTML = "";
-  feedbackEl.textContent = "Nice run. Start a new round below.";
+  feedbackEl.textContent = "Nice run. Click Play Again for another round.";
+  explanationEl.textContent = "";
   nextBtn.textContent = "Play Again";
-  nextBtn.onclick = () => location.reload();
 }
 
 function shuffle(arr) {
-  for (let x = arr.length - 1; x > 0; x--) {
+  for (let x = arr.length - 1; x > 0; x -= 1) {
     const y = Math.floor(Math.random() * (x + 1));
     [arr[x], arr[y]] = [arr[y], arr[x]];
   }

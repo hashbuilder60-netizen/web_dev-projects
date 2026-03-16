@@ -22,7 +22,7 @@
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <button class="top-cta" type="button">Book Demo</button>
+    <button id="open-demo" class="top-cta" type="button">Book Demo</button>
   </header>
 
   <main class="wrap">
@@ -86,6 +86,16 @@
       <details><summary>Can I customize pricing cards?</summary><p>Yes. Card content and price logic are fully editable.</p></details>
     </section>
   </main>
+  <dialog id="demo-dialog">
+    <form id="demo-form" method="dialog" class="demo-form">
+      <h3>Book Demo</h3>
+      <input id="demo-name" aria-label="Your name" placeholder="Your name" required />
+      <input id="demo-email" aria-label="Your email" type="email" placeholder="Your email" required />
+      <button type="submit">Request Demo</button>
+      <button id="close-demo" class="ghost-btn" type="button">Cancel</button>
+      <p id="demo-msg" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
   <script src="script.js"></script>
 </body>
 </html>
