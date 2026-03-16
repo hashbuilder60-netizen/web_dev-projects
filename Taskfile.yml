@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  build:
+    desc: Build TypeScript and update live JS
+    cmds:
+      - npm run build:ts
+
+  serve:
+    desc: Run local static server
+    cmds:
+      - python tools/workflow.py serve 8000
+
+  clean:
+    desc: Remove TS build output
+    cmds:
+      - powershell -NoProfile -Command "Remove-Item -Recurse -Force typescript\\dist" 
