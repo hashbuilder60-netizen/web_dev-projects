@@ -2,7 +2,8 @@
   "name": "web-dev-projects",
   "private": true,
   "scripts": {
-    "build:ts": "tsc -p typescript/tsconfig.json && node typescript/copy-builds.js"
+    "build:ts": "tsc -p typescript/tsconfig.json && node typescript/copy-builds.js",
+    "serve": "python tools/workflow.py serve 8000"
   },
   "devDependencies": {
     "typescript": "^5.5.4"

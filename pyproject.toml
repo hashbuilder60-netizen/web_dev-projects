@@ -1,0 +1,8 @@
+[tool.uv]
+
+[project]
+name = "web-dev-projects-tools"
+version = "0.1.0"
+requires-python = ">=3.10"
+
+dependencies = []

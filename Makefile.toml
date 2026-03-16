@@ -1,0 +1,9 @@
+[tool.cargo-make]
+
+[tasks.build]
+command = "npm"
+args = ["run", "build:ts"]
+
+[tasks.serve]
+command = "python"
+args = ["tools/workflow.py", "serve", "8000"]
