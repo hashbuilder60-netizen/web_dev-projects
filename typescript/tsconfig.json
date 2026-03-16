@@ -5,7 +5,9 @@
     "strict": true,
     "noImplicitAny": true,
     "lib": ["DOM", "ES2020"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "rootDir": ".",
+    "outDir": "./dist"
   },
-  "include": ["./**/*.ts"]
+  "include": ["./*.ts"]
 }
