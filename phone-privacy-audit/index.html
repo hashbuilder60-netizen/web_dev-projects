@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Local-only privacy audit for your own social accounts and phone-number discoverability settings."
+  />
+  <title>Phone Privacy Audit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Local-only audit</p>
+        <h1>Phone Privacy Audit</h1>
+        <p class="lead">
+          Track which of your own accounts use your phone number, where discoverability is
+          still enabled, and what settings deserve a fresh review. No scraping, no phone
+          lookups, no contact discovery.
+        </p>
+      </div>
+
+      <div class="stats-grid" aria-label="Audit summary">
+        <article class="stat-card">
+          <span class="stat-label">Tracked Accounts</span>
+          <strong id="stat-total">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Number Linked</span>
+          <strong id="stat-linked">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Discoverable</span>
+          <strong id="stat-discoverable">0</strong>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">High Priority</span>
+          <strong id="stat-high">0</strong>
+        </article>
+      </div>
+
+      <div class="toolbar">
+        <button type="button" class="button button-primary" id="export-btn">Export JSON</button>
+        <button type="button" class="button" id="import-btn">Import JSON</button>
+        <button type="button" class="button" id="starter-btn">Add Common Platforms</button>
+        <button type="button" class="button button-ghost" id="clear-btn">Clear Audit</button>
+        <input type="file" id="import-input" accept=".json,application/json" hidden />
+      </div>
+    </section>
+
+    <section class="dashboard">
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Your line</p>
+            <h2>Phone Snapshot</h2>
+          </div>
+          <p class="section-note">Keep a label instead of saving the full number.</p>
+        </div>
+
+        <form id="profile-form" class="form-grid">
+          <label>
+            Owner / profile name
+            <input type="text" id="owner-name" name="ownerName" placeholder="Hash Builder" />
+          </label>
+          <label>
+            Phone label
+            <input
+              type="text"
+              id="phone-label"
+              name="phoneLabel"
+              placeholder="Main line ending 42"
+            />
+          </label>
+          <label>
+            Review window
+            <select id="review-window" name="reviewWindow">
+              <option value="30">30 days</option>
+              <option value="60">60 days</option>
+              <option value="90" selected>90 days</option>
+              <option value="180">180 days</option>
+            </select>
+          </label>
+          <button type="submit" class="button button-primary">Save Snapshot</button>
+        </form>
+
+        <div class="snapshot-card" id="profile-summary"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Next moves</p>
+            <h2>Action Queue</h2>
+          </div>
+          <p class="section-note">Generated from the flags you set below.</p>
+        </div>
+        <div id="action-queue" class="queue-list"></div>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Account entry</p>
+            <h2>Add or Update an Account</h2>
+          </div>
+          <p class="section-note">Use this only for accounts you control.</p>
+        </div>
+
+        <form id="account-form" class="form-grid form-grid-wide">
+          <input type="hidden" id="account-id" name="accountId" />
+
+          <label>
+            Platform
+            <select id="platform" name="platform"></select>
+          </label>
+
+          <label id="custom-platform-wrap" class="hidden">
+            Custom platform name
+            <input type="text" id="custom-platform" name="customPlatform" placeholder="Threads" />
+          </label>
+
+          <label>
+            Handle / account label
+            <input type="text" id="handle" name="handle" placeholder="@hashbuilder60" />
+          </label>
+
+          <label>
+            Phone linked?
+            <select id="phone-linked" name="phoneLinked">
+              <option value="review" selected>Needs review</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </label>
+
+          <label>
+            Discoverable by phone?
+            <select id="discoverability" name="discoverability">
+              <option value="off">Off</option>
+              <option value="review" selected>Needs review</option>
+              <option value="on">On</option>
+            </select>
+          </label>
+
+          <label>
+            Contact syncing
+            <select id="contact-sync" name="contactSync">
+              <option value="off">Off</option>
+              <option value="review" selected>Needs review</option>
+              <option value="on">On</option>
+            </select>
+          </label>
+
+          <label>
+            SMS used for security or recovery
+            <select id="sms-security" name="smsSecurity">
+              <option value="off">No</option>
+              <option value="review" selected>Needs review</option>
+              <option value="on">Yes</option>
+            </select>
+          </label>
+
+          <label>
+            Last reviewed
+            <input type="date" id="last-reviewed" name="lastReviewed" />
+          </label>
+
+          <label class="field-span">
+            Notes
+            <textarea
+              id="notes"
+              name="notes"
+              rows="4"
+              placeholder="Example: privacy page is buried in account center, revisit after app update."
+            ></textarea>
+          </label>
+
+          <div class="form-actions field-span">
+            <button type="submit" class="button button-primary" id="save-account-btn">Save Account</button>
+            <button type="button" class="button" id="cancel-edit-btn">Cancel Edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Review view</p>
+            <h2>Tracked Accounts</h2>
+          </div>
+          <p class="section-note">Sorted by urgency so the riskiest settings stay visible.</p>
+        </div>
+
+        <div class="filters">
+          <div class="filter-group" id="filter-group" role="tablist" aria-label="Account filters">
+            <button type="button" class="filter-chip active" data-filter="all">All</button>
+            <button type="button" class="filter-chip" data-filter="high">High priority</button>
+            <button type="button" class="filter-chip" data-filter="discoverable">Discoverable</button>
+            <button type="button" class="filter-chip" data-filter="linked">Phone linked</button>
+            <button type="button" class="filter-chip" data-filter="stale">Stale review</button>
+          </div>
+
+          <label class="search">
+            <span class="visually-hidden">Search accounts</span>
+            <input type="search" id="search-input" placeholder="Search platform or handle" />
+          </label>
+        </div>
+
+        <div id="account-list" class="card-list"></div>
+        <div id="empty-state" class="empty-state"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
