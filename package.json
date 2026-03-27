@@ -2,7 +2,7 @@
   "name": "web-dev-projects",
   "private": true,
   "scripts": {
-    "build:ts": "tsc -p typescript/tsconfig.json && node typescript/copy-builds.js",
+    "build:ts": "set \"PATH=%ProgramFiles%\\nodejs;%PATH%\" && tsc -p typescript/tsconfig.json && node typescript/copy-builds.js",
     "serve": "python tools/workflow.py serve 8000"
   },
   "devDependencies": {

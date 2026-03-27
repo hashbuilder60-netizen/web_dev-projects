@@ -1,3 +1,4 @@
+(() => {
 type Priority = "high" | "medium" | "low";
 
 type Task = {
@@ -182,3 +183,6 @@ function load(): Task[] {
 function save() {
   localStorage.setItem(KEY, JSON.stringify(tasks));
 }
+
+})();
+

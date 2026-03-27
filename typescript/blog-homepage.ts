@@ -1,3 +1,4 @@
+(() => {
 const posts = [
   { title: "Building Better Layout Systems", category: "css", min: 6, summary: "Use spatial tokens and grid heuristics for stable design systems.", views: 12000, date: "2026-03-05" },
   { title: "State Management Without Frameworks", category: "javascript", min: 8, summary: "A practical pattern for medium-size vanilla apps.", views: 18500, date: "2026-03-08" },
@@ -90,3 +91,6 @@ function restorePrefs() {
     // no-op
   }
 }
+
+})();
+

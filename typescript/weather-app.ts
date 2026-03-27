@@ -1,3 +1,4 @@
+(() => {
 const f = document.getElementById("f") as HTMLFormElement | null;
 const city = document.getElementById("city") as HTMLInputElement | null;
 const unit = document.getElementById("unit") as HTMLInputElement | null;
@@ -193,3 +194,6 @@ async function fetchJson<T>(url: string): Promise<T> {
   if (!response.ok) throw new Error(`Request failed: ${response.status}`);
   return response.json() as Promise<T>;
 }
+
+})();
+

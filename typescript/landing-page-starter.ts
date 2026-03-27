@@ -1,3 +1,4 @@
+(() => {
 const toggle = document.getElementById("billing-toggle") as HTMLInputElement | null;
 const prices = [...document.querySelectorAll(".price")] as HTMLElement[];
 const suffixes = [...document.querySelectorAll(".plans small")] as HTMLElement[];
@@ -77,3 +78,6 @@ function cycleQuote() {
   if (quote) quote.textContent = testimonials[t].q;
   if (author) author.textContent = testimonials[t].a;
 }
+
+})();
+

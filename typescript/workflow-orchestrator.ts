@@ -1,3 +1,4 @@
+(() => {
 type WorkflowStatus = "queued" | "running" | "done";
 type WorkflowTemplateName = "release" | "content" | "incident";
 
@@ -427,3 +428,6 @@ class WorkflowOrchestrator {
 }
 
 new WorkflowOrchestrator();
+
+})();
+

@@ -1,3 +1,4 @@
+(() => {
 const qty = document.getElementById("qty") as HTMLElement | null;
 const hero = document.getElementById("hero") as HTMLElement | null;
 const msg = document.getElementById("msg") as HTMLElement | null;
@@ -68,3 +69,6 @@ tabs.forEach((tab) => {
   });
 });
 if (tabContent) tabContent.textContent = tabData.specs;
+
+})();
+

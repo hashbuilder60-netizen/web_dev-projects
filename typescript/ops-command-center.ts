@@ -1,3 +1,4 @@
+(() => {
 type OpsRegion = "global" | "emea" | "amer" | "apac";
 type OpsRange = "24h" | "7d" | "30d";
 type OpsFocus = "overview" | "incidents" | "releases";
@@ -375,3 +376,6 @@ class OpsCommandCenter {
 }
 
 new OpsCommandCenter();
+
+})();
+

@@ -1,3 +1,4 @@
+(() => {
 type Project = {
   title: string;
   type: "saas" | "fintech" | "commerce";
@@ -126,3 +127,6 @@ function stopQuoteRotation() {
   clearInterval(quoteTimer);
   quoteTimer = null;
 }
+
+})();
+

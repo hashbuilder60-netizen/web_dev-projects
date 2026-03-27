@@ -1,3 +1,4 @@
+(() => {
 const ALL = [
   {
     q: "What does CSS stand for?",
@@ -233,3 +234,6 @@ function shuffle<T>(arr: T[]): T[] {
   }
   return arr;
 }
+
+})();
+
