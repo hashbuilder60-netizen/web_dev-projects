@@ -2,8 +2,6 @@
 
 Portfolio-grade frontend project collection by **hashbuilder60-netizen** with a mix of polished consumer UIs and higher-end internal tooling concepts.
 
-[![Deploy GitHub Pages](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)
-
 ## Recruiter Snapshot
 - Role fit: Frontend Engineer progressing toward senior-level product and platform work
 - Strengths shown: UI systems, interaction design, state handling, dashboard workflows, responsive layout, UX-oriented implementation
