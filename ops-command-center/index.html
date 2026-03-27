@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Senior-style operations dashboard with command palette, saved views, notifications, and analytics widgets." />
+  <meta name="theme-color" content="#0f766e" />
+  <title>Ops Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="badge">Ops Stack</span>
+        <h1>Command Center</h1>
+        <p>Operational analytics, incidents, and releases in one workspace.</p>
+      </div>
+      <nav class="nav" aria-label="Sections">
+        <button class="nav-link active" data-focus="overview" type="button">Overview</button>
+        <button class="nav-link" data-focus="incidents" type="button">Incidents</button>
+        <button class="nav-link" data-focus="releases" type="button">Releases</button>
+      </nav>
+      <div class="note">
+        <strong>Cmd palette</strong>
+        <p>Use <kbd>Ctrl</kbd> + <kbd>K</kbd> to jump around the dashboard.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="toolbar">
+        <div class="filters">
+          <label>
+            <span>Region</span>
+            <select id="region-select">
+              <option value="global">Global</option>
+              <option value="emea">EMEA</option>
+              <option value="amer">AMER</option>
+              <option value="apac">APAC</option>
+            </select>
+          </label>
+          <label>
+            <span>Window</span>
+            <select id="range-select">
+              <option value="24h">24h</option>
+              <option value="7d">7d</option>
+              <option value="30d">30d</option>
+            </select>
+          </label>
+        </div>
+        <div class="toolbar-actions">
+          <button id="save-view" type="button">Save View</button>
+          <button id="export-view" type="button">Export Snapshot</button>
+          <button id="palette-open" class="ghost" type="button">Command Palette</button>
+          <button id="theme-toggle" class="ghost" type="button">Theme</button>
+        </div>
+      </header>
+
+      <section class="metrics" aria-label="Metrics">
+        <article class="metric-card">
+          <p>Monthly recurring revenue</p>
+          <strong id="mrr-value">$0</strong>
+          <small id="mrr-delta">0% vs prior window</small>
+        </article>
+        <article class="metric-card">
+          <p>Incident load</p>
+          <strong id="incident-count">0</strong>
+          <small id="incident-delta">0 escalations</small>
+        </article>
+        <article class="metric-card">
+          <p>Deployment frequency</p>
+          <strong id="deploy-rate">0</strong>
+          <small id="deploy-delta">per engineering squad</small>
+        </article>
+        <article class="metric-card">
+          <p>NPS pulse</p>
+          <strong id="nps-value">0</strong>
+          <small id="nps-delta">0 point movement</small>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Revenue trajectory</h2>
+            <span class="mono" id="trajectory-label">global / 24h</span>
+          </div>
+          <div id="sparkline" class="sparkline" aria-label="Revenue trajectory chart"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Active incidents</h2>
+            <span class="mono" id="focus-label">overview</span>
+          </div>
+          <ul id="incident-list" class="list"></ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Release train</h2>
+            <span class="mono">next 14 days</span>
+          </div>
+          <ul id="release-list" class="list compact"></ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Notification stream</h2>
+            <span class="mono">system events</span>
+          </div>
+          <ul id="notification-list" class="list compact"></ul>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="palette-dialog">
+    <form method="dialog" class="palette">
+      <h2>Command Palette</h2>
+      <div class="palette-grid">
+        <button class="palette-action" data-command="toggle-theme" type="button">Toggle theme</button>
+        <button class="palette-action" data-command="focus-incidents" type="button">Focus incidents</button>
+        <button class="palette-action" data-command="focus-releases" type="button">Focus releases</button>
+        <button class="palette-action" data-command="save-view" type="button">Save current view</button>
+        <button class="palette-action" data-command="export" type="button">Export snapshot</button>
+      </div>
+      <button class="ghost full" type="submit">Close</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

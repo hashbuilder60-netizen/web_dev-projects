@@ -8,7 +8,9 @@ const map = {
   "ecommerce-product-page.js": "ecommerce-product-page/script.js",
   "blog-homepage.js": "blog-homepage/script.js",
   "quiz-app.js": "quiz-app/script.js",
-  "weather-app.js": "weather-app/script.js"
+  "weather-app.js": "weather-app/script.js",
+  "ops-command-center.js": "ops-command-center/script.js",
+  "workflow-orchestrator.js": "workflow-orchestrator/script.js"
 };
 
 const distDir = path.join(__dirname, "dist");

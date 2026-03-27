@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Workflow orchestration studio with templates, execution simulation, undo and redo, and JSON import and export." />
+  <meta name="theme-color" content="#1d4ed8" />
+  <title>Workflow Orchestrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="workspace">
+    <header class="hero">
+      <div>
+        <span class="pill">Workflow Studio</span>
+        <h1>Workflow Orchestrator</h1>
+        <p>Model approval flows, simulate execution, and manage state history without a framework.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="simulate-run" type="button">Simulate Run</button>
+        <button id="export-json" class="ghost" type="button">Export JSON</button>
+      </div>
+    </header>
+
+    <section class="templates">
+      <button class="template-btn" data-template="release" type="button">Release Pipeline</button>
+      <button class="template-btn" data-template="content" type="button">Content Approval</button>
+      <button class="template-btn" data-template="incident" type="button">Incident Response</button>
+      <button id="add-step" class="ghost" type="button">Add Step</button>
+      <button id="undo" class="ghost" type="button">Undo</button>
+      <button id="redo" class="ghost" type="button">Redo</button>
+      <button id="import-json" class="ghost" type="button">Import JSON</button>
+    </section>
+
+    <section class="grid">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Workflow Graph</h2>
+          <span class="mono" id="workflow-summary">0 steps</span>
+        </div>
+        <ol id="workflow-list" class="workflow-list"></ol>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Inspector</h2>
+          <span class="mono" id="selected-label">none selected</span>
+        </div>
+        <form id="inspector-form" class="inspector">
+          <label>
+            <span>Step title</span>
+            <input id="step-title" type="text" />
+          </label>
+          <label>
+            <span>Owner</span>
+            <input id="step-owner" type="text" />
+          </label>
+          <label>
+            <span>Status</span>
+            <select id="step-status">
+              <option value="queued">Queued</option>
+              <option value="running">Running</option>
+              <option value="done">Done</option>
+              <option value="blocked">Blocked</option>
+            </select>
+          </label>
+          <label>
+            <span>ETA</span>
+            <input id="step-eta" type="text" />
+          </label>
+          <button type="submit">Apply Changes</button>
+          <button id="delete-step" class="ghost" type="button">Delete Step</button>
+        </form>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Execution Log</h2>
+          <span class="mono">event timeline</span>
+        </div>
+        <ul id="log-list" class="log-list"></ul>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="import-dialog">
+    <form method="dialog" class="import-form">
+      <h2>Import Workflow JSON</h2>
+      <textarea id="import-text" rows="10" placeholder='{"steps":[...]}'></textarea>
+      <button id="apply-import" type="button">Apply Import</button>
+      <button class="ghost" type="submit">Close</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>

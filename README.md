@@ -1,12 +1,12 @@
 # web_dev-projects
 
-Portfolio-grade frontend project collection by **hashbuilder60-netizen**.
+Portfolio-grade frontend project collection by **hashbuilder60-netizen** with a mix of polished consumer UIs and higher-end internal tooling concepts.
 
 [![Deploy GitHub Pages](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/hashbuilder60-netizen/web_dev-projects/actions/workflows/deploy-pages.yml/badge.svg)
 
 ## Recruiter Snapshot
-- Role fit: Junior-to-mid Frontend Engineer (HTML, CSS, JavaScript)
-- Strengths shown: UI systems, interaction design, state handling, responsive layout, UX-oriented implementation
+- Role fit: Frontend Engineer progressing toward senior-level product and platform work
+- Strengths shown: UI systems, interaction design, state handling, dashboard workflows, responsive layout, UX-oriented implementation
 - Live hub: https://hashbuilder60-netizen.github.io/web_dev-projects/
 
 ## Project Showcase
@@ -19,6 +19,8 @@ Portfolio-grade frontend project collection by **hashbuilder60-netizen**.
 | Blog Homepage | https://hashbuilder60-netizen.github.io/web_dev-projects/blog-homepage/ | Editorial layout, client-side filtering/search, feed rendering |
 | Weather App | https://hashbuilder60-netizen.github.io/web_dev-projects/weather-app/ | API integration, geolocation, forecast rendering, unit switching |
 | Quiz App | https://hashbuilder60-netizen.github.io/web_dev-projects/quiz-app/ | Timed interactions, game loop logic, score persistence |
+| Ops Command Center | https://hashbuilder60-netizen.github.io/web_dev-projects/ops-command-center/ | Operations dashboards, analytics presentation, command palette UX, local persistence |
+| Workflow Orchestrator | https://hashbuilder60-netizen.github.io/web_dev-projects/workflow-orchestrator/ | Workflow modeling, simulation, undo/redo state, JSON import/export |
 
 ## Professional Polish Pass
 - Improved error handling and state safety
@@ -29,6 +31,7 @@ Portfolio-grade frontend project collection by **hashbuilder60-netizen**.
 ## Advanced Languages (TypeScript)
 - TypeScript reference implementations are in `typescript/`
 - Build pipeline provided for compiling TS into live JS
+- Higher-end dashboard apps include typed references for enterprise-style UI logic
 
 ## Mixed Tooling Workflow
 - Node build: `npm run build:ts`
@@ -54,6 +57,12 @@ Each project was upgraded against patterns used by popular products:
 - Medium/Substack editorial flow
 - Kahoot-style gamified interactions
 - AccuWeather-style weather dashboard layout
+- Linear-style internal tooling clarity
+- Retool-inspired workflow operations interfaces
+
+## Senior-Level Additions
+- `ops-command-center/`: enterprise operations cockpit for product, support, and release monitoring
+- `workflow-orchestrator/`: workflow builder for release, content, and incident management sequences
 
 ## Local Run
 1. Open `index.html` in a browser.

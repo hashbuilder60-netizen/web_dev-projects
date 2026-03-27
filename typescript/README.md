@@ -18,3 +18,5 @@ These files are TypeScript versions of each app and can be compiled to update th
 - `typescript/blog-homepage.ts`
 - `typescript/quiz-app.ts`
 - `typescript/weather-app.ts`
+- `typescript/ops-command-center.ts`
+- `typescript/workflow-orchestrator.ts`
